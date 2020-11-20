@@ -17,3 +17,7 @@ table a {
   color: red;
   text-decoration: none;
 }
+
+.bold {
+  font-weight: bold;
+}

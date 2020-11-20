@@ -21,7 +21,7 @@
     <h1>Tedious Tasks</h1>
     {%if task_list%}
 
-    <table class="pure-table-striped pure-table-striped">
+    <table class="pure-table pure-table-striped">
       <thead>
         <tr>
           <th>Task</th>
@@ -39,6 +39,16 @@
           <td><a href="{% url 'main:delete' task.id%}">X</a></td>
         </tr>
         {% endfor %}
+        <td class="bold">
+          Total Time
+        </td>
+        <td>
+          {%if total_time.time__sum%}
+          {{total_time.time__sum}} {%else%} 0 {%endif%} 
+        </td>
+        <td></td><td></td>
+          
+        </h2>
       </tbody>
     </table>
 
@@ -47,12 +57,9 @@
     {%endif%}
   </body>
   <hr />
-  <h2>
-    Total Time for tasks is : {%if total_time.time__sum%}
-    {{total_time.time__sum}} {%else%} 0 {%endif%} minutes
-  </h2>
+  <h2>Add Task</h2>
   <form class="pure-form" action="{% url 'main:create' %}" method="post">
     {% csrf_token %} {{ task_form.as_p }}
-    <input type="submit" class="pre-button" value="Create Task" />
+    <input type="submit" class="pre-button" value="Add Task" />
   </form>
 </html>
